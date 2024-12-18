@@ -32,6 +32,7 @@ double time_matrix_multiplication(int version, int** A, int** B, int** C, int n)
         case 4: result = matrix_multiplication_kij(A, B, n); break;
         case 5: result = matrix_multiplication_kji(A, B, n); break;
     }
+    
     end = clock();
     free_matrix(result, n);
     return ((double)(end - start)) / CLOCKS_PER_SEC;

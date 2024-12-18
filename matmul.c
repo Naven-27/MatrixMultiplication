@@ -82,15 +82,6 @@ int** matrix_multiplication_jik(int** A, int** B, int n) {
     return result;
 }
 
-/**
- * Performs matrix multiplication using the jki loop ordering.
- * This order iterates over columns of A, rows of B, and computes rows of the result.
- *
- * @param A The first matrix.
- * @param B The second matrix.
- * @param n The size of the matrices (n x n).
- * @return A pointer to the resulting matrix after multiplication.
- */
 int** matrix_multiplication_jki(int** A, int** B, int n) {
     int** result = allocate_matrix(n);
     for (int j = 0; j < n; j++) {
@@ -103,15 +94,7 @@ int** matrix_multiplication_jki(int** A, int** B, int n) {
     return result;
 }
 
-/**
- * Performs matrix multiplication using the kij loop ordering.
- * This order iterates over rows of B, rows of A, and computes elements of the result.
- *
- * @param A The first matrix.
- * @param B The second matrix.
- * @param n The size of the matrices (n x n).
- * @return A pointer to the resulting matrix after multiplication.
- */
+
 int** matrix_multiplication_kij(int** A, int** B, int n) {
     int** result = allocate_matrix(n);
     for (int k = 0; k < n; k++) {

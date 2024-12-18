@@ -32,7 +32,6 @@ int compare_matrices(int** mat1, int** mat2, int n) {
     }
     return 1;
 }
-
 void print_matrix(int** matrix, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -41,7 +40,6 @@ void print_matrix(int** matrix, int n) {
         printf("\n");
     }
 }
-
 int main() {
     int n;
     int** A = read_matrix_from_file("Unit_test/unit_100/A.txt", &n);

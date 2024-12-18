@@ -130,7 +130,7 @@ void free_matrix(int** matrix, int n) {
 }
 
 int main() {
-    int sizes[] = {120, 140, 160, 180, 200, 220, 240, 260, 280, 300,
+    int sizes[] = {100,120, 140, 160, 180, 200, 220, 240, 260, 280, 300,
                    320, 340, 360, 380, 400, 420, 440, 460, 480, 500};
 
     for (int i = 0; i < sizeof(sizes) / sizeof(sizes[0]); i++) {

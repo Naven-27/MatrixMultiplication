@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "matmul.c"
+#include "matmul.h"
 
 int** read_matrix_from_file(const char* filename, int* n) {
     FILE* file = fopen(filename, "r");
@@ -21,6 +21,7 @@ int** read_matrix_from_file(const char* filename, int* n) {
     fclose(file);
     return matrix;
 }
+
 int compare_matrices(int** mat1, int** mat2, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -31,6 +32,7 @@ int compare_matrices(int** mat1, int** mat2, int n) {
     }
     return 1;
 }
+
 void print_matrix(int** matrix, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -42,9 +44,9 @@ void print_matrix(int** matrix, int n) {
 
 int main() {
     int n;
-    int** A = read_matrix_from_file("A.txt", &n);
-    int** B = read_matrix_from_file("B.txt", &n);
-    int** C = read_matrix_from_file("C.txt", &n);
+    int** A = read_matrix_from_file("Unit_test/unit_100/A.txt", &n);
+    int** B = read_matrix_from_file("Unit_test/unit_100/B.txt", &n);
+    int** C = read_matrix_from_file("Unit_test/unit_100/C.txt", &n);
     int** result = matrix_multiplication(A, B, n);
     if (compare_matrices(result, C, n)) {
         printf("Result matches the expected matrix C.\n");

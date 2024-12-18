@@ -32,7 +32,6 @@ double time_matrix_multiplication(int version, int** A, int** B, int** C, int n)
         case 4: result = matrix_multiplication_kij(A, B, n); break;
         case 5: result = matrix_multiplication_kji(A, B, n); break;
     }
-    
     end = clock();
     free_matrix(result, n);
     return ((double)(end - start)) / CLOCKS_PER_SEC;
@@ -40,7 +39,7 @@ double time_matrix_multiplication(int version, int** A, int** B, int** C, int n)
 void run_unit_tests() {
     int sizes[] = {100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 420, 440, 460, 480, 500};
     const char* loop_order[] = {"ijk", "ikj", "jik", "jki", "kij", "kji"};
-    FILE* report = fopen("test_report.csv", "w");
+    FILE* report = fopen("test_report.xlsx", "w");
     fprintf(report, "Matrix Size,ijk,ikj,jik,jki,kij,kji\n");
     for (int i = 0; i < sizeof(sizes) / sizeof(sizes[0]); i++) {
         int n = sizes[i];

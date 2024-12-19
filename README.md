@@ -24,9 +24,11 @@ This project implements various matrix multiplication algorithms using different
 
 ## Compilation and Execution
 1. Clone the repository or copy the source files into a directory.
-2. Compile the program using the `Makefile`:
+2. Compile the program using the :
    ```bash
-   make
+   gcc -o [object file name] filename.c
 Run the program:
-./matrix_multiplication
+Install Git Bash and move to the project directory. Run the following command to execute the source code
+```bash
+./run_tests.sh
 

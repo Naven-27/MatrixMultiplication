@@ -27,6 +27,7 @@ This project implements various matrix multiplication algorithms using different
 2. Compile the program using the :
    ```bash
    gcc -o [object file name] filename.c
+3.
 3.Run the program:
     Install Git Bash and move to the project directory. Run the following command to execute the source code
   ```bash

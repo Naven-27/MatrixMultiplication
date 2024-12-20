@@ -15,8 +15,6 @@ This project implements various matrix multiplication algorithms using different
 - Compares the result matrices from each multiplication method with a reference matrix in a text file.
 - Frees allocated memory after use to avoid memory leaks.
 
-## Directory Structure
-
 
 ## Prerequisites
 - **C Compiler**: Any C compiler such as `gcc`.

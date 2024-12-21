@@ -14,6 +14,11 @@ int** allocate_matrix(int n) {
     for (int i = 0; i < n; i++) {
         matrix[i] = (int*)malloc(n * sizeof(int));
     }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            matrix[i][j] = 0;  // Initialize each element to 0
+        }
+    }
     return matrix;
 }
 
@@ -32,11 +37,8 @@ int** matrix_multiplication_ijk(int** A, int** B, int n) {
             result[i][j] = 0;
             for (int k = 0; k < n; k++) {
                 result[i][j] += A[i][k] * B[k][j];
-
             }
-           // printf("%d ",result[i][j]);
         }
-       // printf("\n");
     }
     return result;
 }
@@ -51,11 +53,6 @@ int** matrix_multiplication_ijk(int** A, int** B, int n) {
  */
 int** matrix_multiplication_ikj(int** A, int** B, int n) {
     int** result = allocate_matrix(n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            result[i][j] = 0;  // Initialize each element to 0
-        }
-    }
     for (int i = 0; i < n; i++) {
         for (int k = 0; k < n; k++) {
             for (int j = 0; j < n; j++) {
@@ -76,7 +73,6 @@ int** matrix_multiplication_ikj(int** A, int** B, int n) {
  */
 int** matrix_multiplication_jik(int** A, int** B, int n) {
     int** result = allocate_matrix(n);
-    
     for (int j = 0; j < n; j++) {
         for (int i = 0; i < n; i++) {
             result[i][j] = 0;
@@ -97,11 +93,6 @@ int** matrix_multiplication_jik(int** A, int** B, int n) {
  */
 int** matrix_multiplication_jki(int** A, int** B, int n) {
     int** result = allocate_matrix(n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            result[i][j] = 0;  // Initialize each element to 0
-        }
-    }
     for (int j = 0; j < n; j++) {
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < n; i++) {
@@ -121,11 +112,6 @@ int** matrix_multiplication_jki(int** A, int** B, int n) {
  */
 int** matrix_multiplication_kij(int** A, int** B, int n) {
     int** result = allocate_matrix(n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            result[i][j] = 0;  // Initialize each element to 0
-        }
-    }
     for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -146,11 +132,6 @@ int** matrix_multiplication_kij(int** A, int** B, int n) {
  */
 int** matrix_multiplication_kji(int** A, int** B, int n) {
     int** result = allocate_matrix(n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            result[i][j] = 0;  // Initialize each element to 0
-        }
-    }
     for (int k = 0; k < n; k++) {
         for (int j = 0; j < n; j++) {
             for (int i = 0; i < n; i++) {
@@ -160,6 +141,7 @@ int** matrix_multiplication_kji(int** A, int** B, int n) {
     }
     return result;
 }
+
 
 /**
  * Frees the allocated memory for a matrix.

@@ -18,13 +18,12 @@ This project implements various matrix multiplication algorithms using different
 
 ## Prerequisites
 - **C Compiler**: Any C compiler such as `gcc`.
-- **Make**: For using the provided `Makefile`.
 
 ## Compilation and Execution
 1. Clone the repository or copy the source files into a directory.
 2. Compile the program using the :
    ```bash
-   gcc -o [object file name] filename.c
+   gcc filename.c -o [object file name]
 3.Run the program:
     Install Git Bash and move to the project directory. Run the following command to execute the source code
   ```bash

@@ -151,11 +151,11 @@ void run_unit_tests() {
     }
     char filename[100];
     int n=1;
-    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/A.txt", n);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/A.txt");
     int** A = read_matrix_from_file(filename, &n);
-    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/B.txt", n);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/B.txt");
     int** B = read_matrix_from_file(filename, &n);
-    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/C.txt", n);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/C.txt");
     int** C = read_matrix_from_file(filename, &n);
     fprintf(report, "1x1,1x1");
     if(A[0][0]*B[0][0] == C[0][0]){
@@ -172,11 +172,11 @@ void run_unit_tests() {
     double avg_time;
     n=100;
     fprintf(report, "100x100,100x100");
-    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/A.txt", n);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/A.txt");
     A = read_matrix_from_file(filename, &n);
-    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/B.txt", n);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/B.txt");
     B = read_matrix_from_file(filename, &n);
-    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/C.txt", n);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/C.txt");
     C = read_matrix_from_file(filename, &n);
 
         avg_time = measure_average_time(A, B, C, n, matrix_multiplication_ijk);
@@ -235,11 +235,11 @@ void run_unit_tests() {
         }
 
         fprintf(report, "100x100,100x100");
-        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/A.txt", n);
+        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/A.txt");
         A = read_matrix_from_file(filename, &n);
-        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/B.txt", n);
+        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/B.txt");
         B = read_matrix_from_file(filename, &n);
-        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/C.txt", n);
+        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/C.txt");
         C = read_matrix_from_file(filename, &n);
         test_passed = 1; // Assume test passes until a failure is encountered
 

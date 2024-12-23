@@ -22,6 +22,29 @@ This project implements various matrix multiplication algorithms using different
 - Compares the result matrices from each multiplication method with a reference matrix in a text file.
 - Frees allocated memory after use to avoid memory leaks.
 
+### Description of Key Files and Directories
+1. **driver.c**  
+   The main program that controls the execution of the matrix multiplication methods and their performance comparison.
+
+2. **matmul.c**  
+   Contains implementations of the six matrix multiplication methods (`ijk`, `ikj`, etc.).
+
+3. **generate.c**  
+   A utility program to generate random matrices for testing.
+
+4. **matmul.h**  
+   Header file that contains function declarations for matrix multiplication.
+
+5. **run_tests.sh**  
+   A shell script to automate the testing of various matrix multiplication methods. It compiles the program, runs tests, and generates results.
+
+6. **Unit_test**  
+   Contains unit tests for validating matrix multiplication. Each subdirectory (e.g., `unit_100` `unit_120...`) has:
+   - `A.txt`: Input matrix A
+   - `B.txt`: Input matrix B
+   - `C.txt`: Expected result matrix
+   Contains corner tests for validating matrix multiplication. Subdirectories (e.g., `smallest_size` `identity_matrix_correct..`)
+
 ## Test Cases
 - Corner Test Cases:
 - Smallest Matrix Size: Tests with matrix size = 1x1.

@@ -1,7 +1,6 @@
 #include "matmul.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
  * Allocates memory for a square matrix of size n x n.
  * Each row is dynamically allocated as a pointer to an array of ints.
@@ -21,7 +20,6 @@ int** allocate_matrix(int n) {
     }
     return matrix;
 }
-
 /**
  * Performs matrix multiplication using the ijk loop ordering.
  * This order iterates over rows of A, then columns of B, and computes elements of the result.
@@ -42,7 +40,6 @@ int** matrix_multiplication_ijk(int** A, int** B, int n) {
     }
     return result;
 }
-
 /**
  * Performs matrix multiplication using the ikj loop ordering.
  * This order iterates over rows of A, then rows of B, and computes elements of the result.
@@ -62,7 +59,6 @@ int** matrix_multiplication_ikj(int** A, int** B, int n) {
     }
     return result;
 }
-
 /**
  * Performs matrix multiplication using the jik loop ordering.
  * This order iterates over columns of A, rows of B, and computes elements of the result.
@@ -102,7 +98,6 @@ int** matrix_multiplication_jki(int** A, int** B, int n) {
     }
     return result;
 }
-
 /**
  * Performs matrix multiplication using the kij loop ordering.
  * @param A The first matrix.
@@ -121,7 +116,6 @@ int** matrix_multiplication_kij(int** A, int** B, int n) {
     }
     return result;
 }
-
 /**
  * Performs matrix multiplication using the kji loop ordering.
  * This order iterates over rows of B, columns of A, and computes elements of the result.
@@ -141,8 +135,6 @@ int** matrix_multiplication_kji(int** A, int** B, int n) {
     }
     return result;
 }
-
-
 /**
  * Frees the allocated memory for a matrix.
  * @param matrix The matrix to be freed.
@@ -156,4 +148,3 @@ void free_matrix(int** matrix, int n) {
         free(matrix);  // Free the top-level matrix pointer
     }
 }
-

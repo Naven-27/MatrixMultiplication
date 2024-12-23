@@ -3,13 +3,11 @@
 #include <time.h>
 #include <string.h>
 #include <sys/stat.h>
-
 // Check if a file exists.
 int file_exists(const char *filename) {
     struct stat buffer;
     return (stat(filename, &buffer) == 0);
 }
-
 // Generate a matrix of random integers and write it to a file.
 void generate_matrix_to_file(int n, const char* filename) {
     srand(time(NULL));
@@ -27,7 +25,6 @@ void generate_matrix_to_file(int n, const char* filename) {
     }
     fclose(file);
 }
-
 // Read a matrix of integers from a file.
 int** read_matrix_from_file(const char* filename, int* n) {
     FILE* file = fopen(filename, "r");
@@ -48,7 +45,6 @@ int** read_matrix_from_file(const char* filename, int* n) {
     fclose(file);
     return matrix;
 }
-
 // Perform matrix multiplication.
 int** matrix_multiplication(int** A, int** B, int n) {
     int** C = (int**)malloc(n * sizeof(int*));
@@ -65,7 +61,6 @@ int** matrix_multiplication(int** A, int** B, int n) {
     }
     return C;
 }
-
 void generate_identity_matrix_to_file(int n, const char* filename) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
@@ -98,7 +93,6 @@ void generate_wrong_identity_matrix_to_file(int n, const char* filename) {
     }
     fclose(file);
 }
-
 // Write a matrix of integers to a file.
 void write_matrix_to_file(int** matrix, int n, const char* filename) {
     if (file_exists(filename)) {
@@ -132,7 +126,6 @@ void write_matrix_to_file(int** matrix, int n, const char* filename) {
         fclose(file);
     }
 }
-
 // Free the memory allocated for a matrix.
 void free_matrix(int** matrix, int n) {
     for (int i = 0; i < n; i++) {
@@ -140,7 +133,6 @@ void free_matrix(int** matrix, int n) {
     }
     free(matrix);
 }
-
 int main() {
     int sizes[] = {100,120,140,160,180,200,220,240,260,280,300,320,340,360,380,400,420,440,460,480,500};
     for (int i = 0; i < sizeof(sizes) / sizeof(sizes[0]); i++) {

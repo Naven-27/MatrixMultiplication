@@ -7,7 +7,6 @@
 #include <ctype.h>
 // Number of iterations for averaging timings
 #define NUM_ITERATIONS 10
-
 // Reading matrix from file and store it in an integer matrix
 int** read_matrix_from_file(const char* filename, int* n) {
     FILE* file = fopen(filename, "r");
@@ -36,7 +35,6 @@ int** read_matrix_from_file(const char* filename, int* n) {
         }
     }
     fclose(file);
-    
     return matrix;
 }
 int is_numeric(const char* str) {

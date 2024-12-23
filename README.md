@@ -1,5 +1,12 @@
 # Matrix Multiplication Performance Comparison and Repository Maintenance
 
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Test Cases](#test-cases)
+- [Memory Error Detection](#memory-error-detection)
+- [Prerequisites](#prerequisites)
+- [Compilation and Execution](#compilation-and-execution)
 ## Overview
 This project implements various matrix multiplication algorithms using different loop orderings to study their performance and compare the results. The program dynamically allocates memory for square matrices, performs the multiplication, and verifies the results against a reference matrix provided in a `.txt` file.
 

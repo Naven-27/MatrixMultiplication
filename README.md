@@ -22,6 +22,9 @@ This project implements various matrix multiplication algorithms using different
 - Non-Numeric Matrices: Detects and handles invalid input.
 ### Large Matrices: Tests from 100x100 to 500x500 matrices.
 
+## Memory Error Detection
+ - Used tools - Address Sanitizer and Memcheck for detecting memory errors and leaks.
+
 ## Prerequisites
 - **C Compiler**: Any C compiler such as `gcc`.
 
@@ -30,6 +33,7 @@ This project implements various matrix multiplication algorithms using different
 2. Compile the program using the :
    ```bash
    gcc filename.c -o [object file name] 
+
 3.Run the program:
     Install Git Bash and move to the project directory. Run the following command to execute the source code
   ```bash

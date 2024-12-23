@@ -22,6 +22,8 @@ This project implements various matrix multiplication algorithms using different
 - Non-Numeric Matrices: Detects and handles invalid input.
 ### Large Matrices: Tests from 100x100 to 500x500 matrices.
 
+## Memory Error Detection
+ - Used tools - Address Sanitizer and Memcheck for detecting memory errors and leaks.
 ## Prerequisites
 - **C Compiler**: Any C compiler such as `gcc`.
 

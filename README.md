@@ -15,9 +15,11 @@ This project implements various matrix multiplication algorithms using different
 - Compares the result matrices from each multiplication method with a reference matrix in a text file.
 - Frees allocated memory after use to avoid memory leaks.
 
-
 ## Prerequisites
 - **C Compiler**: Any C compiler such as `gcc`.
+
+## Memory Error Detection
+- Used tools - Address Sanitizer and Memcheck for detecting memory errors and leaks.
 
 ## Compilation and Execution
 1. Clone the repository or copy the source files into a directory.

@@ -148,9 +148,12 @@ int** matrix_multiplication_kji(int** A, int** B, int n) {
  * @param matrix The matrix to be freed.
  * @param rows The number of rows in the matrix.
  */
-void free_matrix(int** matrix, int rows) {
-    for (int i = 0; i < rows; i++) {
-        free(matrix[i]);
+void free_matrix(int** matrix, int n) {
+    if (matrix != NULL) {
+        for (int i = 0; i < n; i++) {
+            free(matrix[i]);  // Free each row of the matrix
+        }
+        free(matrix);  // Free the top-level matrix pointer
     }
-    free(matrix);
 }
+

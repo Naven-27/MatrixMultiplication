@@ -113,55 +113,55 @@ void run_unit_tests() {
     }
     fprintf(report, "Matrix A,Matrix B,ijk,ikj,jik,jki,kij,kji,Result\n");
     for (int i = 0; i < sizeof(sizes) / sizeof(sizes[0]); i++) {
-        int n = sizes[i];
+        int n_dim = sizes[i];
         char filename[100];
-        snprintf(filename, sizeof(filename), "Unit_test/unit_%d/A.txt", n);
-        int** A = read_matrix_from_file(filename, &n);
-        snprintf(filename, sizeof(filename), "Unit_test/unit_%d/B.txt", n);
-        int** B = read_matrix_from_file(filename, &n);
-        snprintf(filename, sizeof(filename), "Unit_test/unit_%d/C.txt", n);
-        int** C = read_matrix_from_file(filename, &n);
+        snprintf(filename, sizeof(filename), "Unit_test/unit_%d/A.txt", n_dim);
+        int** A = read_matrix_from_file(filename, &n_dim);
+        snprintf(filename, sizeof(filename), "Unit_test/unit_%d/B.txt", n_dim);
+        int** B = read_matrix_from_file(filename, &n_dim);
+        snprintf(filename, sizeof(filename), "Unit_test/unit_%d/C.txt", n_dim);
+        int** C = read_matrix_from_file(filename, &n_dim);
         // Print matrix dimensions in the format requested
-        fprintf(report, "%dx%d,%dx%d", n, n, n, n);
+        fprintf(report, "%dx%d,%dx%d", n_dim, n_dim, n_dim, n_dim);
         // Measure and record average time for each loop order
         int test_passed = 1; // Assume test passes until a failure is encountered
         double avg_time;
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_ijk);
+        avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_ijk);
         if (avg_time == -1) {
             test_passed = 0;
             fprintf(report, ",-1");
         } else {
             fprintf(report, ",%.5f", avg_time);
         }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_ikj);
+        avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_ikj);
         if (avg_time == -1) {
             test_passed = 0;
             fprintf(report, ",-1");
         } else {
             fprintf(report, ",%.5f", avg_time);
         }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_jik);
+        avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_jik);
         if (avg_time == -1) {
             test_passed = 0;
             fprintf(report, ",-1");
         } else {
             fprintf(report, ",%.5f", avg_time);
         }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_jki);
+        avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_jki);
         if (avg_time == -1) {
             test_passed = 0;
             fprintf(report, ",-1");
         } else {
             fprintf(report, ",%.5f", avg_time);
         }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_kij);
+        avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_kij);
         if (avg_time == -1) {
             test_passed = 0;
             fprintf(report, ",-1");
         } else {
             fprintf(report, ",%.5f", avg_time);
         }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_kji);
+        avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_kji);
         if (avg_time == -1) {
             test_passed = 0;
             fprintf(report, ",-1");
@@ -175,176 +175,176 @@ void run_unit_tests() {
             fprintf(report, ",Fail\n");
         }
         // Free memory
-        free_matrix(A, n);
-        free_matrix(B, n);
-        free_matrix(C, n);
+        free_matrix(A, n_dim);
+        free_matrix(B, n_dim);
+        free_matrix(C, n_dim);
     }
     // Corner tests (1x1 matrix, identity matrices)
     char filename[100];
-    int n = 1;
+    int n_dim = 1;
     snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/A.txt");
-    int** A = read_matrix_from_file(filename, &n);
+    int** A = read_matrix_from_file(filename, &n_dim);
     snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/B.txt");
-    int** B = read_matrix_from_file(filename, &n);
+    int** B = read_matrix_from_file(filename, &n_dim);
     snprintf(filename, sizeof(filename), "Unit_test/corner_tests/smallest_size/C.txt");
-    int** C = read_matrix_from_file(filename, &n);
+    int** C = read_matrix_from_file(filename, &n_dim);
     fprintf(report, "1x1,1x1");
     if (A[0][0] * B[0][0] == C[0][0]) {
         for (int i = 0; i < 6; i++)
-            fprintf(report, "0.00000");
+            fprintf(report, ",0.00000");
         fprintf(report, ",Pass\n");
     } else {
         for (int i = 0; i < 5; i++)
-            fprintf(report, "-1");
+            fprintf(report, ",-1");
         fprintf(report, ",Fail\n");
     }
-    free_matrix(A, n);
-    free_matrix(B, n);
-    free_matrix(C, n);
+    free_matrix(A, n_dim);
+    free_matrix(B, n_dim);
+    free_matrix(C, n_dim);
     // Test 100x100 identity matrix
      int test_passed = 1; // Assume test passes until a failure is encountered
     double avg_time;
-    n=100;
+    n_dim=100;
     fprintf(report, "100x100,100x100");
     snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/A.txt");
-    A = read_matrix_from_file(filename, &n);
+    A = read_matrix_from_file(filename, &n_dim);
     snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/B.txt");
-    B = read_matrix_from_file(filename, &n);
+    B = read_matrix_from_file(filename, &n_dim);
     snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_correct/C.txt");
-    C = read_matrix_from_file(filename, &n);
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_ijk);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_ikj);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_jik);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_jki);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_kij);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_kji);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        // Add test result (Pass/Fail) to the report
-        if (test_passed) {
-            fprintf(report, ",Pass\n");
-        } else {
-            fprintf(report, ",Fail\n");
-        }
-        free_matrix(A, n);
-        free_matrix(B, n);
-        free_matrix(C, n);
-        test_passed = 1; // Assume test passes until a failure is encountered
-        n=100;
-        fprintf(report, "100x100,100x100");
-        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/A.txt");
-        A = read_matrix_from_file(filename, &n);
-        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/B.txt");
-        B = read_matrix_from_file(filename, &n);
-        snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/C.txt");
-        C = read_matrix_from_file(filename, &n);
-        test_passed = 1; // Assume test passes until a failure is encountered
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_ijk);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_ikj);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_jik);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_jki);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_kij);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        avg_time = measure_average_time(A, B, C, n, matrix_multiplication_kji);
-        if (avg_time == -1) {
-            test_passed = 0;
-            fprintf(report, ",-1");
-        } else {
-            fprintf(report, ",%.5f", avg_time);
-        }
-        // Add test result (Pass/Fail) to the report
-        if (test_passed) {
-            fprintf(report, ",Pass\n");
-        } else {
-            fprintf(report, ",Fail\n");
-        }
-    free_matrix(A,n);
-    free_matrix(B,n);
-    free_matrix(C,n);
+    C = read_matrix_from_file(filename, &n_dim);
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_ijk);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_ikj);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_jik);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_jki);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_kij);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_kji);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    // Add test result (Pass/Fail) to the report
+    if (test_passed) {
+        fprintf(report, ",Pass\n");
+    } else {
+        fprintf(report, ",Fail\n");
+    }
+    free_matrix(A, n_dim);
+    free_matrix(B, n_dim);
+    free_matrix(C, n_dim);
+    test_passed = 1; // Assume test passes until a failure is encountered
+    n_dim=100;
+    fprintf(report, "100x100,100x100");
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/A.txt");
+    A = read_matrix_from_file(filename, &n_dim);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/B.txt");
+    B = read_matrix_from_file(filename, &n_dim);
+    snprintf(filename, sizeof(filename), "Unit_test/corner_tests/identity_matrix_wrong/C.txt");
+    C = read_matrix_from_file(filename, &n_dim);
+    test_passed = 1; // Assume test passes until a failure is encountered
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_ijk);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_ikj);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_jik);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_jki);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_kij);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    avg_time = measure_average_time(A, B, C, n_dim, matrix_multiplication_kji);
+    if (avg_time == -1) {
+        test_passed = 0;
+        fprintf(report, ",-1");
+    } else {
+        fprintf(report, ",%.5f", avg_time);
+    }
+    // Add test result (Pass/Fail) to the report
+    if (test_passed) {
+        fprintf(report, ",Pass\n");
+    } else {
+        fprintf(report, ",Fail\n");
+    }
+    free_matrix(A,n_dim);
+    free_matrix(B,n_dim);
+    free_matrix(C,n_dim);
     // Check Non numeric type of inputs in the matrix
-    n = 5;
+    n_dim = 5;
     int s;
     fprintf(report, "5x5,5x5");
     const char* other_dir = "Unit_test/corner_tests/non_numeric";
     snprintf(filename, sizeof(filename), "%s/A.txt", other_dir);
-    int r= read_matrix_from_file_with_validation(filename, &n);
-    if(r==0)
+    int numeric= read_matrix_from_file_with_validation(filename, &n_dim);
+    if(numeric==0)
     {
         for (int i = 0; i < 6; i++)
-            fprintf(report, "invalid");
+            fprintf(report, ",invalid");
         fprintf(report, ",Pass\n");
     }
     else
     {
         snprintf(filename, sizeof(filename), "%s/B.txt", other_dir);
-        s = read_matrix_from_file_with_validation(filename, &n);
-        if(s==0)
+        numeric = read_matrix_from_file_with_validation(filename, &n_dim);
+        if(numeric==0)
         {
             for (int i = 0; i < 6; i++)
-               fprintf(report, "invalid");
+               fprintf(report, ",invalid");
             fprintf(report, ",Pass\n");
         }
     }
